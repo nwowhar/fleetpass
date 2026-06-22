@@ -1,0 +1,72 @@
+{
+  "$comment": "Fleetpass beta-trial prestart template. This is an ORIGINAL Fleetpass checklist, not a digitisation of Northern Star NSR229 or Gold Fields Rev 1 — we never got the real item-by-item lists for either, just their structure (A/B/C-by-consequence, a Functional & Operational group outside that hierarchy, a FIRE HAZARDS sub-heading, and a fail-note column). This template borrows that structure with generic, standard light-vehicle daily-check items so there's a real, usable book to launch the beta with. `updatedAt` is intentionally omitted — the seed/import script stamps it with a Firestore server timestamp on write, since static JSON has no Timestamp type.",
+  "name": "Fleetpass Beta Trial — Light Vehicle Prestart",
+  "scope": "org",
+  "version": 1,
+  "categories": [
+    {
+      "id": "cat-a",
+      "label": "Category A — Critical",
+      "colour": "#C0392B",
+      "groundsVehicle": true,
+      "requiresSignoff": false,
+      "order": 1
+    },
+    {
+      "id": "cat-b",
+      "label": "Category B — Maintenance Sign-off",
+      "colour": "#E67E22",
+      "groundsVehicle": true,
+      "requiresSignoff": true,
+      "order": 2
+    },
+    {
+      "id": "cat-c",
+      "label": "Category C — Report Only",
+      "colour": "#F4C20D",
+      "groundsVehicle": false,
+      "requiresSignoff": false,
+      "order": 3
+    },
+    {
+      "id": "cat-fo",
+      "label": "Functional and Operational Checks",
+      "colour": "#2E86AB",
+      "groundsVehicle": false,
+      "requiresSignoff": false,
+      "order": 4
+    }
+  ],
+  "items": [
+    { "id": "fireExtinguisher", "label": "Fire extinguisher fitted, charged, and within service date", "type": "passfail", "categoryId": "cat-a", "group": "FIRE HAZARDS", "required": true, "order": 1 },
+    { "id": "fluidLeaks", "label": "No visible fuel, oil, or other fluid leaks", "type": "passfail", "categoryId": "cat-a", "group": "FIRE HAZARDS", "required": true, "order": 2 },
+    { "id": "tyres", "label": "Tyres — condition, tread depth, and pressure all satisfactory", "type": "passfail", "categoryId": "cat-a", "required": true, "order": 3 },
+    { "id": "wheelNuts", "label": "Wheel nuts secure and rims undamaged", "type": "passfail", "categoryId": "cat-a", "required": true, "order": 4 },
+    { "id": "brakes", "label": "Service brakes operate effectively", "type": "passfail", "categoryId": "cat-a", "required": true, "order": 5 },
+    { "id": "parkBrake", "label": "Park brake holds the vehicle", "type": "passfail", "categoryId": "cat-a", "required": true, "order": 6 },
+    { "id": "steering", "label": "Steering operates without excessive play or noise", "type": "passfail", "categoryId": "cat-a", "required": true, "order": 7 },
+    { "id": "seatbelts", "label": "Seatbelts fitted, functional, and undamaged — all seating positions", "type": "passfail", "categoryId": "cat-a", "required": true, "order": 8 },
+    { "id": "windscreen", "label": "Windscreen free of cracks or damage obstructing the driver's view", "type": "passfail", "categoryId": "cat-a", "required": true, "order": 9 },
+    { "id": "isolator", "label": "Isolation switch / battery isolator operates correctly", "type": "passfail", "categoryId": "cat-a", "required": true, "order": 10 },
+
+    { "id": "lights", "label": "Head, tail, brake, and indicator lights all operate", "type": "passfail", "categoryId": "cat-b", "required": true, "order": 1 },
+    { "id": "horn", "label": "Horn operates", "type": "passfail", "categoryId": "cat-b", "required": true, "order": 2 },
+    { "id": "wipers", "label": "Windscreen wipers and washers operate", "type": "passfail", "categoryId": "cat-b", "required": true, "order": 3 },
+    { "id": "mirrors", "label": "All mirrors fitted, unbroken, and correctly adjusted", "type": "passfail", "categoryId": "cat-b", "required": true, "order": 4 },
+    { "id": "reverseAlarm", "label": "Reverse alarm / beeper operates (if fitted)", "type": "passfail", "categoryId": "cat-b", "required": false, "order": 5 },
+    { "id": "aircon", "label": "Air conditioning / cabin ventilation operates", "type": "passfail", "categoryId": "cat-b", "required": true, "order": 6 },
+
+    { "id": "wheelChocks", "label": "Wheel chocks present and serviceable", "type": "passfail", "categoryId": "cat-c", "required": false, "order": 1 },
+    { "id": "firstAid", "label": "First aid kit present and stocked", "type": "passfail", "categoryId": "cat-c", "required": false, "order": 2 },
+    { "id": "spareTyre", "label": "Spare tyre present and serviceable", "type": "passfail", "categoryId": "cat-c", "required": false, "order": 3 },
+    { "id": "cleanliness", "label": "Vehicle interior and exterior reasonably clean and free of rubbish", "type": "passfail", "categoryId": "cat-c", "required": false, "order": 4 },
+    { "id": "uhfRadio", "label": "UHF / two-way radio operates", "type": "passfail", "categoryId": "cat-c", "required": false, "order": 5 },
+    { "id": "loadRestraints", "label": "Load restraints / tie-down points in good condition (if fitted)", "type": "passfail", "categoryId": "cat-c", "required": false, "order": 6 },
+    { "id": "otherFaults", "label": "Other faults or comments (describe)", "type": "text", "categoryId": "cat-c", "required": false, "order": 7 },
+
+    { "id": "fuelLevel", "label": "Fuel level (%)", "type": "number", "categoryId": "cat-fo", "required": true, "order": 1 },
+    { "id": "oilLevel", "label": "Engine oil level satisfactory", "type": "passfail", "categoryId": "cat-fo", "required": true, "order": 2 },
+    { "id": "coolantLevel", "label": "Coolant level satisfactory", "type": "passfail", "categoryId": "cat-fo", "required": true, "order": 3 },
+    { "id": "dashWarnings", "label": "Dash warning lights — none illuminated at startup", "type": "passfail", "categoryId": "cat-fo", "required": true, "order": 4 }
+  ]
+}
